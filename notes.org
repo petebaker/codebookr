@@ -1,0 +1,135 @@
+#+BEGIN_COMMENT
+## Filename:    readme.org
+## Hostname:    peterbakerlinux.sph.uq.edu.au
+## Directory:   /home/pete/Data/dev/codebookr/
+## Licence:     GPLv3 see <http://www.gnu.org/licenses/>
+## 
+## Created at:  Tue Apr  4 16:58:36 2017
+## Change Log: 
+## 
+#+END_COMMENT
+#+TITLE: Notes on 'codebookr' package
+#+AUTHOR: Peter Baker
+#+EMAIL: p.baker1@uq.edu.au
+#+TAGS: office(o) home(h) computer(c) graphicalModels(g) workFlow(w) music(m) band(b)
+#+SEQ_TODO: TODO(t) STARTED(s) WAITING(w) APPT(a) | DONE(d) CANCELLED(c) DEFERRED(f)
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../css/notebook.css" />
+#+EXPORT_SELECT_TAGS: export
+#+EXPORT_EXCLUDE_TAGS: noexport
+#+OPTIONS: H:2 num:nil toc:nil \n:nil @:t ::t |:t ^:{} _:{} *:t TeX:t LaTeX:t
+#+STARTUP: showall
+#+STARTUP: indent
+#+STARTUP: hidestars
+#+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
+
+* Initially
+- readCodeBook.R from dryworkflow which I believe is mid 2015 (not good)
+file is in  /home/pete/Data/Rworkflow-package/dryworkflow/R  
+on peterbakerlinux.sph.uq.edu.au
+- [2017-04-04 Tue]used devtools::create("./codebookr") in base directoy ..
+- [2017-04-04 Tue]modified DESCRIPTION accordingly
+- [2017-04-04 Tue]grabbed examples from inst/demoFiles in
+/home/pete/Data/Rworkflow-package/dryworkflow
+- [2017-04-04 Tue] added readme.org in .Rbuildignore using  
+devtools::use_build_ignore("readme.org")
+- [2017-04-05 Wed] added Imports using
+devtools::use_package("tidyverse")
+devtools::use_package("assertr")
+
+* Process (as documented previously)
+Had devtools and roxygen2 loaded but probably best to rethink and use
+devtools:: etc. Maybe should rethink and use a combination of RStudio
+and ess
+
+Think this will suffice for ESS not have a package but need to sort
+out errors .RD files then add readCodeBook and try to create simple
+merge example etc
+
+library(devtools)
+document()
+build()
+check()
+
+or perhaps just use devtools::
+
+eg devtools::load_all()
+   devtools::document()
+   devtools::build()
+   devtools::check()
+
+and perhaps use RStudio a bit more for package development - ess seems
+pretty lame although many devtools and package development 
+  bindings etc available with 
+- ess-r-devtools-ask bound to C-c C-w C-a.
+- ess-r-package-mode
+- ess-r-set-evaluation-env bound by default to C-c C-t C-s
+ or set ess-r-package-auto-set-evaluation-env to nil to disable this. 
+- devtools packages and are accessible with C-c C-w prefix see documentation
+  for ess-r-package-mode
+
+
+* Codebook data
+
+Column names for data dictionary (parameter column_names)
+
+| Name              | Value in file    | Notes                     |
+|-------------------+------------------+---------------------------|
+| variable_name     | "Variable"       |                           |
+| variable_label    | "Label"          |                           |
+| variable_original | "Original_Name"  |                           |
+| variable_levels   | "Levels"         | for factors               |
+| variable_limits   | "Limits"         | for continuous variables  |
+| min               | "Minimum"        | "   "           "         |
+| max               | "Maximum"        | "   "           "         |
+| missing_values    | "Missing_Values" | documented eg -9, .,  etc |
+| factor_type       | "Factor_Type"    | factor, nominal, ordinal  |
+| comments          | "Comments"       |                           |
+|                   |                  |                           |
+
+Note that 
+- all column_names are unlikely to be present
+- can override column names
+- might be best to set up as options so that can be changed globally
+  where neceesary (.onLoad - see pp30 R Packages)
+
+* ideas for other functions
+- should I move from camel case to underscore and lower case
+- remember can use structure() to make data frame with attribute in
+  one hit
+- I thought I had some of these in a previous incarnation of
+  dryworkflow
+** TODO addFactors or addFactorLevels or add_factors or create_factors
+- definitely use 'forcats'
+- what about 'purrr' or 'stringr'? Of any use?
+- check values for factors maybe case change as well 
+** TODO validate_limits for continuous variables
+- dplyr ? continuous variables ?
+** TODO overall wrapper function to do all in one
+
+NB: could change column_* to col_* and keep names a bit smaller
+
+* S3 codebook object
+Maybe should have several objects in list - not just codebook. How
+about these as possibilities or should some be attributes?? NB: Can
+always modify once I get working strategy
+- data_dictionary (al. la. table above)
+- version_data_dictionary ??
+- hashsum_data_dictionary (for cross checking)
+- data_management_plan (various details as list - can be empty of course)
+    + version
+    + date
+    + description
+    + url or location
+    + authors 
+    + just grab some examples and try and populate variours components
+- data_managemnt_plan_hashsum ?
+- shreadsheet_name  (attributes??)
+- spreadsheet_column_names
+- spreadsheet_hashsum
+- log - list indexed by times?
+
+Some of these things are really about version control - this would be
+an attempt to make them self contained but VC better IMHO
+
+
+

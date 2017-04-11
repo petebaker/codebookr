@@ -1,0 +1,25 @@
+Package: codebookr
+Title: Aids cleaning, checking and formatting datasets using codebook metadata
+Version: 0.0.0.9002
+Authors@R: person("Peter", "Baker", email = "drpetebaker@gmail.com", role = c("aut", "cre"))
+Description: Automates cleaning, checking and formatting data using metadata
+    from Codebooks or Data Dictionaries. It is primarily aimed at
+    epidemiological research and medical studies but can be easily
+    used in other research areas. Codebook metadata can be read into
+    R and then used directly for data checking, cleaning and factor
+    level definitions. Packages 'tidyverse' and 'assertr'
+    are used for reading and cleaning data.
+Depends: R (>= 3.3.3)
+License: GPL-3 
+Encoding: UTF-8
+LazyData: true
+Imports: tidyverse,
+    assertr,
+    magrittr,
+    utils,
+    digest,
+    dplyr,
+    readr,
+    stringr,
+    zoo
+RoxygenNote: 6.0.1

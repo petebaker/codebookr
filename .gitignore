@@ -1,0 +1,113 @@
+## From https://gist.github.com/917150
+
+*~
+*.png
+*.tiff
+*.jpg
+*.jpeg
+
+## .gitignore
+## some from http://help.github.com/ignore-files/ 
+##   and added R/latex specific
+## Note: goes in root of project and is not stored with git repo
+
+#####################
+# emacs backups etc #
+#####################
+*~
+\#*\#
+auto/
+
+#######################################################
+# R output                                            #
+# NB: may want to comment pdf's in doc subdirectories #
+#######################################################
+.Rhistory
+*.Rout
+*_Rout.txt
+*.pdf
+
+#######################################
+# intermediate Sweave/latex/org files #
+#######################################
+## *.tex # uncomment if too many intermediate Sweave tex files
+*.aux
+*.out
+*.log
+*.bbl
+*.blg
+*.ilg
+*.ind
+
+##########################
+# Packages/zip/iso files #
+##########################
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+#############
+# Databases #
+#############
+*.sql
+*.sqlite
+
+
+#############
+# latex #
+#############
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.pdfsync
+*.nav
+*.snm
+
+#############
+# latexmk #
+#############
+
+*.fdb_latexmk
+*.fls
+
+#################
+## R files
+#################
+
+*.Rout
+*_Rout.txt
+.Rhistory
+Rplots.pdf
+.Rproj.user
+.RData
+
+# C object files
+*.o
+*.so
