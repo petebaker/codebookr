@@ -35,7 +35,7 @@ Codebook examples are from research projects undertaken at University
 of Queensland's School of Public Health and have subsequently been
 used in biostatistics courses.
 
-** References
+## References
 
 Fischetti, Tony. 2017. Assertr: Assertive Programming for R Analysis Pipelines. [www](https://CRAN.R-project.org/package=assertr.)
 
