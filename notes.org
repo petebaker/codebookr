@@ -23,43 +23,18 @@
 #+BABEL: :session *R* :cache yes :results output graphics :exports both :tangle yes
 
 * Initially
-- readCodeBook.R from dryworkflow which I believe is mid 2015 (not good)
-file is in  /home/pete/Data/Rworkflow-package/dryworkflow/R  
-on peterbakerlinux.sph.uq.edu.au
-- [2017-04-04 Tue]used devtools::create("./codebookr") in base directoy ..
-- [2017-04-04 Tue]modified DESCRIPTION accordingly
-- [2017-04-04 Tue]grabbed examples from inst/demoFiles in
-/home/pete/Data/Rworkflow-package/dryworkflow
-- [2017-04-04 Tue] added readme.org in .Rbuildignore using  
-devtools::use_build_ignore("readme.org")
-- [2017-04-05 Wed] added Imports using
-devtools::use_package("tidyverse")
-devtools::use_package("assertr")
+- readCodeBook.R from dryworkflow which I believe is mid 2015
 
 * Process (as documented previously)
-Had devtools and roxygen2 loaded but probably best to rethink and use
-devtools:: etc. Maybe should rethink and use a combination of RStudio
-and ess
-
-Think this will suffice for ESS not have a package but need to sort
-out errors .RD files then add readCodeBook and try to create simple
-merge example etc
-
-library(devtools)
-document()
-build()
-check()
-
-or perhaps just use devtools::
+just use devtools:: as outlined in Hadley Wickham's R packages book
 
 eg devtools::load_all()
    devtools::document()
    devtools::build()
    devtools::check()
 
-and perhaps use RStudio a bit more for package development - ess seems
-pretty lame although many devtools and package development 
-  bindings etc available with 
+ess seems lacking w.r.t. package development although bindings etc
+  available with
 - ess-r-devtools-ask bound to C-c C-w C-a.
 - ess-r-package-mode
 - ess-r-set-evaluation-env bound by default to C-c C-t C-s
@@ -90,7 +65,7 @@ Note that
 - all column_names are unlikely to be present
 - can override column names
 - might be best to set up as options so that can be changed globally
-  where neceesary (.onLoad - see pp30 R Packages)
+  where necessary (.onLoad - see pp30 R Packages)
 
 * ideas for other functions
 - should I move from camel case to underscore and lower case
@@ -98,10 +73,13 @@ Note that
   one hit
 - I thought I had some of these in a previous incarnation of
   dryworkflow
-** TODO addFactors or addFactorLevels or add_factors or create_factors
-- definitely use 'forcats'
+** STARTED create_factors function
+- maybe could be named addFactors or addFactorLevels or add_factors or
+  create_factors
+- could use 'forcats' more although readr probably sufficient
 - what about 'purrr' or 'stringr'? Of any use?
-- check values for factors maybe case change as well 
+- check values for factors maybe case change as well - easier to use
+  readr::parse_factor()
 ** TODO validate_limits for continuous variables
 - dplyr ? continuous variables ?
 ** TODO overall wrapper function to do all in one
