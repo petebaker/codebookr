@@ -1,6 +1,6 @@
 Package: codebookr
 Title: Aids cleaning, checking and formatting datasets using codebook metadata
-Version: 0.0.0.9002
+Version: 0.0.0.9003
 Authors@R: person("Peter", "Baker", email = "drpetebaker@gmail.com", role = c("aut", "cre"))
 Description: Automates cleaning, checking and formatting data using metadata
     from Codebooks or Data Dictionaries. It is primarily aimed at
@@ -21,5 +21,6 @@ Imports: tidyverse,
     dplyr,
     readr,
     stringr,
-    zoo
+    zoo,
+    forcats
 RoxygenNote: 6.0.1

@@ -96,11 +96,12 @@ create_factors <-
           "         These will be set to NA\n\nCodebook Levels:\n")
       print(labs)
       cat("Levels in dataset:\n")
+      test.labs <- test.labs %>% .[[1]]  # untibble!
       print(test.labs)
       cat("present in dataset but not codebook:\n")
-      setdiff(test.labs, labs)
+      print(setdiff(test.labs, labs))
       newData[[var_name]] <- 
-        factor(newData[[var_name]], levels = labs)
+        readr::parse_factor(newData[[var_name]], levels = labs)
     }
   }
   newData
